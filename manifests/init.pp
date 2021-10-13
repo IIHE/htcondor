@@ -326,6 +326,7 @@ class htcondor (
   String $singularity_image_expr         = $htcondor::params::singularity_image_expr,
   String $singularity_bind_paths         = $htcondor::params::singularity_bind_paths,
   String $singularity_target_dir         = $htcondor::params::singularity_target_dir,
+  Boolean $use_get_htcondor_metaknob      = $htcondor::params::use_get_htcondor_metaknob,
 ) inherits htcondor::params {
   if $install_repositories {
     class { 'htcondor::repositories': }
