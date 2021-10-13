@@ -29,6 +29,7 @@ class htcondor::config::scheduler {
   $job_default_requestcpus    = $htcondor::job_default_requestcpus
   $job_default_requestdisk    = $htcondor::job_default_requestdisk
   $job_default_requestmemory  = $htcondor::job_default_requestmemory
+  $managers                   = $htcondor::managers
   # template files
   $template_ganglia           = $htcondor::template_ganglia
   $template_queues            = $htcondor::template_queues
