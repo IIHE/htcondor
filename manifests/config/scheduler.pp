@@ -1,7 +1,7 @@
 # htcondor::config::scheduler
 class htcondor::config::scheduler {
   # the get_htcondor metaknob will take of security configuration
-  if ! $htcondor::condor_user::use_get_htcondor_metaknob {
+  if ! $htcondor::use_get_htcondor_metaknob {
     include htcondor::config::security
   }
 
@@ -36,7 +36,7 @@ class htcondor::config::scheduler {
   $template_schedd            = $htcondor::template_schedd
   $template_metaknob_submit   = $htcondor::template_metaknob_submit
 
-  if $htcondor::condor_user::use_get_htcondor_metaknob {
+  if $htcondor::use_get_htcondor_metaknob {
     file { '/etc/condor/config.d/01_metaknob_submit.config':
       content => template($template_metaknob_submit),
       require => Package['condor'],
