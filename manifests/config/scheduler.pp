@@ -6,36 +6,39 @@ class htcondor::config::scheduler {
   }
 
   # general - manifest or 1 or more configs
-  $condor_user                = $htcondor::condor_user
-  $condor_group               = $htcondor::condor_group
-  $ganglia_cluster_name       = $htcondor::ganglia_cluster_name
+  $condor_user                  = $htcondor::condor_user
+  $condor_group                 = $htcondor::condor_group
+  $ganglia_cluster_name         = $htcondor::ganglia_cluster_name
+  # /etc/condor/config.d/01_metaknob_submit.config
+  $queue_super_users            = $htcondor::queue_super_users
+  $queue_super_user_impersonate = $htcondor::queue_super_user_impersonate
   # 12_resourcelimits.config
-  $max_walltime               = $htcondor::max_walltime
-  $max_cputime                = $htcondor::max_cputime
-  $memory_factor              = $htcondor::memory_factor
+  $max_walltime                 = $htcondor::max_walltime
+  $max_cputime                  = $htcondor::max_cputime
+  $memory_factor                = $htcondor::memory_factor
   # /etc/condor/config.d/13_queues.config
-  $queues                     = $htcondor::queues
-  $periodic_expr_interval     = $htcondor::periodic_expr_interval
-  $max_periodic_expr_interval = $htcondor::max_periodic_expr_interval
-  $remove_held_jobs_after     = $htcondor::remove_held_jobs_after
+  $queues                       = $htcondor::queues
+  $periodic_expr_interval       = $htcondor::periodic_expr_interval
+  $max_periodic_expr_interval   = $htcondor::max_periodic_expr_interval
+  $remove_held_jobs_after       = $htcondor::remove_held_jobs_after
   # /etc/condor/config.d/21_schedd.config
-  $max_history_log            = $htcondor::max_history_log
-  $max_history_rotations      = $htcondor::max_history_rotations
-  $rotate_history_daily       = $htcondor::rotate_history_daily
-  $log_to_syslog              = $htcondor::log_to_syslog
-  $daemon_list                = $htcondor::config::daemon_list
-  $schedd_blocked_users       = $htcondor::schedd_blocked_users
-  $schedd_blocked_user_msg    = $htcondor::schedd_blocked_user_msg
-  $job_default_requestcpus    = $htcondor::job_default_requestcpus
-  $job_default_requestdisk    = $htcondor::job_default_requestdisk
-  $job_default_requestmemory  = $htcondor::job_default_requestmemory
-  $managers                   = $htcondor::managers
+  $max_history_log              = $htcondor::max_history_log
+  $max_history_rotations        = $htcondor::max_history_rotations
+  $rotate_history_daily         = $htcondor::rotate_history_daily
+  $log_to_syslog                = $htcondor::log_to_syslog
+  $daemon_list                  = $htcondor::config::daemon_list
+  $schedd_blocked_users         = $htcondor::schedd_blocked_users
+  $schedd_blocked_user_msg      = $htcondor::schedd_blocked_user_msg
+  $job_default_requestcpus      = $htcondor::job_default_requestcpus
+  $job_default_requestdisk      = $htcondor::job_default_requestdisk
+  $job_default_requestmemory    = $htcondor::job_default_requestmemory
+  $managers                     = $htcondor::managers
   # template files
-  $template_ganglia           = $htcondor::template_ganglia
-  $template_queues            = $htcondor::template_queues
-  $template_resourcelimits    = $htcondor::template_resourcelimits
-  $template_schedd            = $htcondor::template_schedd
-  $template_metaknob_submit   = $htcondor::template_metaknob_submit
+  $template_ganglia             = $htcondor::template_ganglia
+  $template_queues              = $htcondor::template_queues
+  $template_resourcelimits      = $htcondor::template_resourcelimits
+  $template_schedd              = $htcondor::template_schedd
+  $template_metaknob_submit     = $htcondor::template_metaknob_submit
 
   if $htcondor::use_get_htcondor_metaknob {
     file { '/etc/condor/config.d/01_metaknob_submit.config':
