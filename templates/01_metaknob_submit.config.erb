@@ -1,3 +1,10 @@
 CONDOR_HOST = <%= @managers.first %>
 # For details, run condor_config_val use role:get_htcondor_submit
 use role:get_htcondor_submit
+
+<% if ! @queue_super_users.empty? then -%>
+QUEUE_SUPER_USERS = <%= @queue_super_users.flatten.join(', ') %>
+<% end -%>
+<% if ! @queue_super_user_impersonate.empty? then -%>
+QUEUE_SUPER_USER_MAY_IMPERSONATE = <%= @queue_super_user_impersonate %>
+<% end -%>
