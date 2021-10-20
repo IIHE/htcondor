@@ -42,7 +42,7 @@ class htcondor::config::manager {
   $template_ganglia                = $htcondor::template_ganglia
   $template_ha                     = $htcondor::template_highavailability
   $template_manager                = $htcondor::template_manager
-  $template_metaknob_submit        = $htcondor::template_metaknob_submit
+  $template_metaknob_manager       = $htcondor::template_metaknob_manager
 
   if $htcondor::use_get_htcondor_metaknob {
     file { '/etc/condor/config.d/01_metaknob_manager.config':
