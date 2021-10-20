@@ -1,6 +1,10 @@
 # htcondor::config::manager
 class htcondor::config::manager {
-  include htcondor::config::security
+  # the get_htcondor metaknob will take of security configuration
+  if ! $htcondor::use_get_htcondor_metaknob {
+    include htcondor::config::security
+  }
+
   # general - manifest or 1 or more configs
   $condor_user                     = $htcondor::condor_user
   $condor_group                    = $htcondor::condor_group
@@ -8,6 +12,8 @@ class htcondor::config::manager {
   $ganglia_cluster_name            = $htcondor::ganglia_cluster_name
   $managers                        = $htcondor::managers
   $use_accounting_groups           = $htcondor::use_accounting_groups
+  # /etc/condor/config.d/01_metaknob_manager.config
+
   # /etc/condor/config.d/11_fairshares.config
   $accounting_groups               = $htcondor::accounting_groups
   $default_prio_factor             = $htcondor::default_prio_factor
@@ -36,6 +42,17 @@ class htcondor::config::manager {
   $template_ganglia                = $htcondor::template_ganglia
   $template_ha                     = $htcondor::template_highavailability
   $template_manager                = $htcondor::template_manager
+
+  if $htcondor::use_get_htcondor_metaknob {
+    file { '/etc/condor/config.d/01_metaknob_manager.config':
+      content => template($template_metaknob_manager),
+      require => Package['condor'],
+      owner   => $condor_user,
+      group   => $condor_group,
+      mode    => '0644',
+      notify  => Exec['/usr/sbin/condor_reconfig'],
+    }
+  }
 
   if $use_accounting_groups {
     file { '/etc/condor/config.d/11_fairshares.config':
