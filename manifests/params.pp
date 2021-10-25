@@ -233,6 +233,8 @@ class htcondor::params {
   )
   $template_metaknob_manager      = hiera('template_metaknob_manager', "${module_name}/01_metaknob_manager.config.erb"
   )
+  $template_metaknob_worker       = hiera('template_metaknob_worker', "${module_name}/01_metaknob_worker.config.erb"
+  )
 
   # Enable support of get_htcondor metaknob
   $use_get_htcondor_metaknob      = hiera('use_get_htcondor_metaknob', false)
