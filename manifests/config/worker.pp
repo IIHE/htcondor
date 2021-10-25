@@ -1,6 +1,9 @@
 # htcondor::config::scheduler
 class htcondor::config::worker {
-  include htcondor::config::security
+  # the get_htcondor metaknob will take of security configuration
+  if ! $htcondor::use_get_htcondor_metaknob {
+    include htcondor::config::security
+  }
 
   # general - manifest or 1 or more configs
   $condor_user               = $htcondor::condor_user
@@ -38,6 +41,18 @@ class htcondor::config::worker {
   # template files
   $template_workernode       = $htcondor::template_workernode
   $template_singularity      = $htcondor::template_singularity
+  $template_metaknob_worker  = $htcondor::template_metaknob_worker
+
+  if $htcondor::use_get_htcondor_metaknob {
+    file { '/etc/condor/config.d/01_metaknob_worker.config':
+      content => template($template_metaknob_worker),
+      require => Package['condor'],
+      owner   => $condor_user,
+      group   => $condor_group,
+      mode    => '0644',
+      notify  => Exec['/usr/sbin/condor_reconfig'],
+    }
+  }
 
   file { '/etc/condor/config.d/20_workernode.config':
     content => template($template_workernode),
