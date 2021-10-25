@@ -11,6 +11,7 @@ class htcondor::config::worker {
   $healthcheck_path          = $htcondor::healthcheck_path
   $healthcheck_script        = $htcondor::healthcheck_script
   $healthcheck_period        = $htcondor::healthcheck_period
+  $managers                  = $htcondor::managers
   # /etc/condor/config.d/20_workernode.config
   $custom_machine_attributes = $htcondor::custom_machine_attributes
   $custom_job_attributes     = $htcondor::custom_job_attributes
