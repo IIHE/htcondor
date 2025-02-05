@@ -19,6 +19,7 @@ class htcondor::config::manager {
   $default_prio_factor             = $htcondor::default_prio_factor
   $group_accept_surplus            = $htcondor::group_accept_surplus
   $group_autoregroup               = $htcondor::group_autoregroup
+  $group_prefix                    = $htcondor::group_prefix
   $high_priority_groups            = $htcondor::high_priority_groups
   $priority_halflife               = $htcondor::priority_halflife
   # /etc/condor/config.d/22_manager.config

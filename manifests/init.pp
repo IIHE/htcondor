@@ -155,6 +155,7 @@ class htcondor (
   $default_prio_factor            = $htcondor::params::default_prio_factor,
   $group_accept_surplus           = $htcondor::params::group_accept_surplus,
   $group_autoregroup              = $htcondor::params::group_autoregroup,
+  $group_prefix                   = $htcondor::params::group_prefix,
   $healthcheck_path               = $htcondor::params::healthcheck_path,
   $healthcheck_script             = $htcondor::params::healthcheck_script,
   $healthcheck_period             = $htcondor::params::healthcheck_period,

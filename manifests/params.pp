@@ -68,6 +68,7 @@ class htcondor::params {
   $default_prio_factor            = hiera('default_prio_factor', 100000.00)
   $group_accept_surplus           = hiera('group_accept_surplus', true)
   $group_autoregroup              = hiera('group_autoregroup', true)
+  $group_prefix                   = hiera('group_prefix', 'group_')
 
   $healthcheck_path               = hiera('healthcheck_path', '/usr/local/bin/healthcheck_wn_condor')
   $healthcheck_script             = hiera('healthcheck_script', "puppet:///modules/${module_name}/healthcheck_wn_condor"
