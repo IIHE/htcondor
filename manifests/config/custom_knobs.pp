@@ -10,7 +10,7 @@
 #   The group that condor runs as. Defaults to 'condor'.
 #
 class htcondor::config::custom_knobs (
-  Optional[Hash] $custom_knobs,
+  Hash $custom_knobs,
   Optional[String] $template_custom_knobs = undef,
   Optional[String] $condor_user = $htcondor::condor_user,
   Optional[String] $condor_group = $htcondor::condor_group,

@@ -59,7 +59,7 @@ class htcondor::config {
     contain $logging_class
   }
 
-  if htcondor::custom_knobs != {} {
+  if defined(htcondor::custom_knobs) {
     class { $custom_knobs_class: }
     contain $custom_knobs_class
   }
