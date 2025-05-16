@@ -11,7 +11,7 @@
 #
 class htcondor::config::custom_knobs (
   Hash $custom_knobs = $htcondor::custom_knobs,
-  Optional[String] $template_custom_knobs = undef,
+  Optional[String] $template_custom_knobs = $htcondor::template_custom_knobs,
   Optional[String] $condor_user = $htcondor::condor_user,
   Optional[String] $condor_group = $htcondor::condor_group,
 ) {
