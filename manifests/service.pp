@@ -3,14 +3,15 @@
 # Starts the services for HTCondor
 class htcondor::service {
   $is_remote_submit = $htcondor::is_remote_submit
-  $service_state = $is_remote_submit ? { true => 'stopped', default => 'running' }
+  #$service_state = $is_remote_submit ? { true => 'stopped', default => 'running' }
+  $service_state = $is_remote_submit ? { true => false, default => true }
 
   # Remote submit nodes don't have running service
   service { 'condor':
     ensure     => $service_state,
-    enable     => true,
-    hasrestart => true,
-    hasstatus  => true,
+    enable     => $service_state,
+    hasrestart => $service_state,
+    hasstatus  => $service_state,
   }
 
   # this exec is called from the config, but we can't run it if the condor
