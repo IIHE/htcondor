@@ -48,7 +48,7 @@
 # @param email_domain [String]
 #   The email domain to use for the HTCondor pool. This is used to construct email addresses for job owners and administrators.
 #   Defaults to 'example.com'.
-# @param condor_priority [Integer] The priority of the HTCondor repository.
+# @param condor_priority [String] The priority of the HTCondor repository.
 # @param condor_version [String] The version of HTCondor to install.
 # @param custom_machine_attributes [Hash] A hash of custom machine attributes.
 # @param custom_job_attributes [Hash] A hash of custom job attributes.
@@ -178,7 +178,7 @@ class htcondor (
   String $email_domain                     = $htcondor::params::email_domain,
   Variant[Array, String] $schedulers       = $htcondor::params::schedulers,
   String $admin_email                      = $htcondor::params::admin_email,
-  Optional[Integer] $condor_priority       = $htcondor::params::repo_priority,
+  Optional[String] $condor_priority       = $htcondor::params::repo_priority,
   String $condor_version                   = $htcondor::params::condor_version,
   Hash $custom_machine_attributes          = $htcondor::params::custom_machine_attributes,
   Hash $custom_job_attributes              = $htcondor::params::custom_job_attributes,
