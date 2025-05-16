@@ -59,10 +59,8 @@ class htcondor::config {
     contain $logging_class
   }
 
-  if defined(htcondor::custom_knobs) {
-    class { $custom_knobs_class: }
-    contain $custom_knobs_class
-  }
+  class { $custom_knobs_class: }
+  contain $custom_knobs_class
 
   if $use_shared_port {
     class { $sharedport_class: }
