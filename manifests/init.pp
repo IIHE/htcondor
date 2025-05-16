@@ -317,7 +317,7 @@ class htcondor (
   Boolean $use_custom_logs                 = $htcondor::params::use_custom_logs,
   Boolean $log_to_syslog                   = $htcondor::params::log_to_syslog,
   Hash $logging_parameters                 = $htcondor::params::logging_parameters,
-  Hash $custom_knobs                       = $htcondor::params::custom_knobs,
+  Optional[Hash] $custom_knobs             = $htcondor::params::custom_knobs,
   Boolean $use_singularity                 = $htcondor::params::use_singularity,
   String $singularity_path                 = $htcondor::params::singularity_path,
   Boolean $force_singularity_jobs          = $htcondor::params::force_singularity_jobs,
