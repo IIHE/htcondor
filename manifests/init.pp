@@ -203,6 +203,7 @@ class htcondor (
   Float $default_prio_factor            = $htcondor::params::default_prio_factor,
   Boolean $group_accept_surplus           = $htcondor::params::group_accept_surplus,
   Boolean $group_autoregroup              = $htcondor::params::group_autoregroup,
+  $group_prefix                   = $htcondor::params::group_prefix,
   String $healthcheck_path               = $htcondor::params::healthcheck_path,
   String $healthcheck_script             = $htcondor::params::healthcheck_script,
   String $healthcheck_period             = $htcondor::params::healthcheck_period,
@@ -326,6 +327,7 @@ class htcondor (
   String $singularity_image_expr         = $htcondor::params::singularity_image_expr,
   String $singularity_bind_paths         = $htcondor::params::singularity_bind_paths,
   String $singularity_target_dir         = $htcondor::params::singularity_target_dir,
+  $use_get_htcondor_metaknob      = $htcondor::params::use_get_htcondor_metaknob,
 ) inherits htcondor::params {
   if $install_repositories {
     class { 'htcondor::repositories': }

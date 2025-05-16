@@ -68,6 +68,7 @@ class htcondor::params {
   $default_prio_factor            = hiera('default_prio_factor', 100000.00)
   $group_accept_surplus           = hiera('group_accept_surplus', true)
   $group_autoregroup              = hiera('group_autoregroup', true)
+  $group_prefix                   = hiera('group_prefix', 'group_')
 
   $healthcheck_path               = hiera('healthcheck_path', '/usr/local/bin/healthcheck_wn_condor')
   $healthcheck_script             = hiera('healthcheck_script', "puppet:///modules/${module_name}/healthcheck_wn_condor"
@@ -233,4 +234,13 @@ class htcondor::params {
   )
   $template_singularity           = hiera('template_singularity', "${module_name}/50_singularity.config.erb"
   )
+  $template_metaknob_submit       = hiera('template_metaknob_submit', "${module_name}/01_metaknob_submit.config.erb"
+  )
+  $template_metaknob_manager      = hiera('template_metaknob_manager', "${module_name}/01_metaknob_manager.config.erb"
+  )
+  $template_metaknob_worker       = hiera('template_metaknob_worker', "${module_name}/01_metaknob_worker.config.erb"
+  )
+
+  # Enable support of get_htcondor metaknob
+  $use_get_htcondor_metaknob      = hiera('use_get_htcondor_metaknob', false)
 }

@@ -12,9 +12,9 @@ GROUP_NAMES = \
 <% (0..keys.length.to_i-1).each do |i| -%>
 <% key = keys[i] -%>
 <% if i == keys.length.to_i-1 -%>
-              group_<%= key %>
+              <%= @group_prefix %><%= key %>
 <% else -%>
-              group_<%= key %>, \
+              <%= @group_prefix %><%= key %>, \
 <% end -%>
 <% end -%>
 
@@ -22,7 +22,7 @@ GROUP_NAMES = \
 # consider high_priority groups first and make sure that multi core slot doesn't disappear quickly
 GROUP_SORT_EXPR = ifThenElse(AccountingGroup=?="<none>", 3.4e+38, \
 <% @high_priority_groups.keys.sort.each do |key| -%>
-ifThenElse(AccountingGroup=?="group_<%= key -%>", <%= @high_priority_groups[key] -%>, \
+ifThenElse(AccountingGroup=?="<%= @group_prefix %><%= key -%>", <%= @high_priority_groups[key] -%>, \
 <% end -%>
 ifThenElse(regexp("multicore",AccountingGroup),ifThenElse(GroupQuota > 0,-2+GroupResourcesInUse/GroupQuota,-1), \
 ifThenElse(GroupQuota > 0, GroupResourcesInUse/GroupQuota, 3.3e+38)\
@@ -34,7 +34,7 @@ DEFAULT_PRIO_FACTOR            = <%= @default_prio_factor %>
 <% @accounting_groups.keys.sort.each do |key| -%>
 <% value = @accounting_groups[key] -%>
 <% if value.has_key?('priority_factor') -%>
-GROUP_PRIO_FACTOR_group_<%= key %> =  <%= value['priority_factor'] %>
+GROUP_PRIO_FACTOR_<%= @group_prefix %><%= key %> =  <%= value['priority_factor'] %>
 <% end -%>
 <% end -%>
 
@@ -42,6 +42,6 @@ GROUP_PRIO_FACTOR_group_<%= key %> =  <%= value['priority_factor'] %>
 <% @accounting_groups.keys.sort.each do |key| -%>
 <% value = @accounting_groups[key] -%>
 <% if value.has_key?('dynamic_quota') -%>
-GROUP_QUOTA_DYNAMIC_group_<%= key %> =  <%= value['dynamic_quota'] %>
+GROUP_QUOTA_DYNAMIC_<%= @group_prefix %><%= key %> =  <%= value['dynamic_quota'] %>
 <% end -%>
 <% end %>
