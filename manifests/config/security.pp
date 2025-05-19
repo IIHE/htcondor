@@ -15,12 +15,12 @@
 # @param krb_mapfile_entries [Array] An array of entries for the Kerberos mapfile.
 #
 class htcondor::config::security (
-  String $krb_srv_keytab      = $htcondor::krb_srv_keytab,
-  String $krb_srv_principal   = $htcondor::krb_srv_principal,
-  String $krb_srv_user        = $htcondor::krb_srv_user,
-  String $krb_srv_service     = $htcondor::krb_srv_service,
-  String $krb_client_keytab   = $htcondor::krb_client_keytab,
-  Hash $krb_mapfile_entries = $htcondor::krb_mapfile_entries,
+  Optional[String] $krb_srv_keytab      = $htcondor::krb_srv_keytab,
+  Optional[String] $krb_srv_principal   = $htcondor::krb_srv_principal,
+  Optional[String] $krb_srv_user        = $htcondor::krb_srv_user,
+  Optional[String] $krb_srv_service     = $htcondor::krb_srv_service,
+  Optional[String] $krb_client_keytab   = $htcondor::krb_client_keytab,
+  Optional[Hash] $krb_mapfile_entries   = $htcondor::krb_mapfile_entries,
 ) {
   # general - manifest or 1 or more configs
   $condor_user                  = $htcondor::condor_user
