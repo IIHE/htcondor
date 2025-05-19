@@ -12,7 +12,7 @@
 #
 # @param krb_srv_service [String] The service name for the HTCondor service.
 # @param krb_client_keytab [String] The path to the keytab file for the HTCondor client.
-# @param krb_mapfile_entries [Array] An array of entries for the Kerberos mapfile.
+# @param krb_mapfile_entries [Hash] A dictionary of entries for the Kerberos mapfile.
 #
 class htcondor::config::security (
   Optional[String] $krb_srv_keytab      = $htcondor::krb_srv_keytab,

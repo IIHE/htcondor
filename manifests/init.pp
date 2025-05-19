@@ -294,7 +294,7 @@ class htcondor (
   Optional[String] $krb_srv_user           = undef,
   Optional[String] $krb_srv_service        = undef,
   Optional[String] $krb_client_keytab      = undef,
-  Hash $krb_mapfile_entries                = {},
+  Optional[Hash] $krb_mapfile_entries      = {},
   String $ssl_server_keyfile               = $htcondor::params::ssl_server_keyfile,
   String $ssl_client_keyfile               = $htcondor::params::ssl_client_keyfile,
   String $ssl_server_certfile              = $htcondor::params::ssl_server_certfile,
