@@ -16,7 +16,7 @@ class htcondor::config::custom_knobs (
   Optional[String] $condor_group = $htcondor::condor_group,
 ) {
   if $custom_knobs != {} {
-    file { '/etc/condor/config.d/60_custom_knobs.config':
+    file { '/etc/condor/config.d/660_custom_knobs.config':
       content => template($template_custom_knobs),
       require => Package['condor'],
       owner   => $condor_user,
