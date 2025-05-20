@@ -96,7 +96,7 @@ class htcondor::config::security (
   $worker_list_remote           = prefix($workers, $machine_prefix_remote)
   $worker_list                  = union($worker_list_local, $worker_list_remote)
 
-  file { '/etc/condor/config.d/10_security.config':
+  file { '/etc/condor/config.d/110_security.config':
     content => template($template_security),
     require => Package['condor'],
     owner   => $condor_user,
