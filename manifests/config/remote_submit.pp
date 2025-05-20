@@ -6,7 +6,7 @@ class htcondor::config::remote_submit {
 
   include htcondor::config::security
 
-  file { '/etc/condor/config.d/19_remote_submit.config':
+  file { '/etc/condor/config.d/119_remote_submit.config':
     content => 'DAEMON_LIST = ""',
     require => Package['condor'],
     owner   => $condor_user,
